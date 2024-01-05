@@ -13,16 +13,19 @@ resource "random_string" "random-name1" {
 resource "docker_container" "test" {
   image = docker_image.test.image_id
   count = 2
-  name  = join("-", ["test",random_string.random-name1[count.index].result])
+  name  = join("-",["test",random_string.random-name1[count.index].result])
   ports {
     internal = 80
   }
 }
-#in console testing used
+#in console test
 #[for i in [1,2,3] : i+1]
-#[for i in docker_container.test[*] : join(":", [i.network_data[0].ip_address, i.ports[0].external])]
+#[for i in docker_container.test : join(":", [i.network_data[0].ip_address, i.ports[0].external])]
 
+output "ip-with-port" {
+  value = join(":",[docker_container.test.network_data[0].ip_address,docker_container.test.ports[0].external]) 
+}
 
 output "using-for-loop" {
-  value = [for i in docker_container.test[*]: join(":", [i.network_data[0].ip_address, i.ports[0].external])]
+  value = [for i in docker_container.test : join(":", [i.network_data[0].ip_address, i.ports[0].external])]
 }
