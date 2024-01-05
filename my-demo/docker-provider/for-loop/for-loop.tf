@@ -4,7 +4,7 @@ resource "docker_image" "test" {
 
 #use count in random string 
 resource "random_string" "random-name1" {
-  length           = 6
+  length           = 4
   count = 2
   special          = false
   upper = false
