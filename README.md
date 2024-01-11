@@ -1,3 +1,6 @@
+# for rahul wagh terrform repo use
+https://github.com/rahulwagh/Terraform-Topics
+
 # More Than Certified - Terraform
 
 This repo will be moving soon. Pleasee be patient as the course is still in preview and I need to get things polished and cleaned up. More details to come! 
